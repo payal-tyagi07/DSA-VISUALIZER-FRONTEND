@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import topics from '../data/a2zTopics';
 import VisualizationRenderer from './VisualizationRenderer';
-import AlgorithmBubbles from './AlgorithmBubbles';  // ✅ changed to bubbles
+import AlgorithmGalaxy from './AlgorithmGalaxy';  // ✅ changed to space galaxy
 import SearchBarWithSuggestions from './SearchBarWithSuggestions';
 
 const A2ZSheetLayout = () => {
@@ -98,7 +98,7 @@ const A2ZSheetLayout = () => {
 
       {/* Main content – scrollable independently */}
       <div className="flex-1 flex flex-col overflow-y-auto bg-[#0a0a0a]">
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-0">
           {selectedAlgorithm ? (
             <VisualizationRenderer algorithm={selectedAlgorithm} />
           ) : notFoundQuery ? (
@@ -122,7 +122,7 @@ const A2ZSheetLayout = () => {
               </div>
             </div>
           ) : (
-            <AlgorithmBubbles onSelectAlgorithm={handleAlgorithmSelect} />
+            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} />
           )}
         </div>
 
