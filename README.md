@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# 🚀 DSA Visualizer – Algorithm Galaxy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Explore 200+ algorithms as colorful planets in a 3D space galaxy. Search, click, and watch them come to life.**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 What does this project do?
 
-### `npm start`
+This is an **interactive DSA learning platform** that transforms every algorithm into a planet in a 3D galaxy.  
+You can:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **👀 See** algorithms as orbiting planets (Bubble Sort, Binary Search, Kadane’s Algorithm, Dijkstra, etc.)  
+- **🔍 Search** – type any algorithm name (e.g., "graph") – only matching planets remain. Click a category planet to see all its algorithms.  
+- **🌓 Switch themes** – toggle between **dark space** (default) and **light mode** with one click (sun/moon button).  
+- **🎬 Visualize** – click any planet or sidebar entry to open a **step‑by‑step interactive visualization** with controls (play, pause, reset, speed slider).  
+- **📚 Follow a complete DSA curriculum** – the sidebar lists all topics from Basics to Dynamic Programming, with progress tracking.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Examples of visualizable algorithms
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Category            | Example Algorithms |
+|---------------------|--------------------|
+| **Sorting**         | Bubble Sort, Quick Sort, Merge Sort, Insertion Sort |
+| **Arrays**          | Kadane’s Algorithm, Two Sum, Container With Most Water |
+| **Binary Search**   | Standard Binary Search, Koko Eating Bananas, Aggressive Cows |
+| **Linked List**     | Reverse Linked List, Detect Cycle, Merge Two Sorted Lists |
+| **Trees**           | Inorder Traversal, Lowest Common Ancestor, Validate BST |
+| **Graphs**          | BFS, DFS, Dijkstra’s Algorithm, Topological Sort |
+| **Dynamic Programming** | Climbing Stairs, House Robber, Coin Change, LCS |
 
-### `npm run build`
+... and 50+ more with visualizations, plus many others in the roadmap.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React 18** – UI components and state
+- **Three.js / React Three Fiber** – 3D galaxy, planets, orbits
+- **Tailwind CSS** – styling, dark/light mode
+- **Framer Motion** – smooth animations
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎮 How to use
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Explore the galaxy** – planets represent algorithm categories (Sorting, Arrays, etc.).  
+2. **Search** – type "bubble" → only Bubble Sort and related sorting algorithms appear.  
+3. **Click a planet** – opens the full visualization (if available) or shows a "coming soon" message.  
+4. **Toggle theme** – top‑right corner sun/moon button switches between dark and light.  
+5. **Sidebar** – expand any topic to see all algorithms; click any to jump directly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
