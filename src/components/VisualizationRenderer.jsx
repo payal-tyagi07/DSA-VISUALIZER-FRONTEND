@@ -43,7 +43,6 @@ import CountInversions from './CountInversions';
 import ReversePairs from './ReversePairs';
 import MaxProductSubarray from './MaxProductSubarray';
 
-
 // ---------- Binary Search (1D) ----------
 import BinarySearch from './BinarySearch';
 import LowerBoundSearch from './LowerBoundSearch';
@@ -104,9 +103,18 @@ import CopyListWithRandomPointer from './CopyListWithRandomPointer';
 import FlattenMultilevelList from './FlattenMultilevelList';
 
 // ---------- Recursion ----------
-import Factorial from './Factorial';
-import Fibonacci from './Fibonacci';
-import ClimbingStairs from './ClimbingStairs';
+import Factorial from './recursion/Factorial';
+import Fibonacci from './recursion/Fibonacci';
+import Power from './recursion/Power';
+import Subsets from './recursion/Subsets';
+import SubsetsII from './recursion/SubsetsII';
+import Permutations from './recursion/Permutations';
+import CombinationSum from './recursion/CombinationSum';
+import CombinationSumII from './recursion/CombinationSumII';
+import PalindromePartitioning from './recursion/PalindromePartitioning';
+import NQueens from './recursion/NQueens';
+import SudokuSolver from './recursion/SudokuSolver';
+import RatInMaze from './recursion/RatInMaze';
 
 // ---------- Bit Manipulation ----------
 import BitwiseOperations from './BitwiseOperations';
@@ -130,7 +138,7 @@ import QueueUsingArray from './QueueUsingArray';
 import StackUsingQueues from './StackUsingQueues';
 import QueueUsingStacks from './QueueUsingStacks';
 
-//Sliding Window snd Two Pointers
+// ---------- Sliding Window & Two Pointers ----------
 import MaxSumSubarrayK from './MaxSumSubarrayK';
 import LongestSubstringKDistinct from './LongestSubstringKDistinct';
 import FruitIntoBaskets from './FruitIntoBaskets';
@@ -150,14 +158,14 @@ import MergeKSortedLists from './MergeKSortedLists';
 import MedianFinder from './MedianFinder';
 import TaskScheduler from './TaskScheduler';
 
-//----------Greedy----------
+// ---------- Greedy ----------
 import ActivitySelection from './ActivitySelection';
 import NMeetingsInRoom from './NMeetingsInRoom';
 import MinimumPlatforms from './MinimumPlatforms';
 import JobSequencing from './JobSequencing';
 import CoinChangeGreedy from './CoinChangeGreedy';
 import HuffmanCoding from './HuffmanCoding';
-import FractionalKnapsack from './FractionalKnapsack'
+import FractionalKnapsack from './FractionalKnapsack';
 import PrimsAlgorithm from './PrimsAlgorithm';
 import KruskalsAlgorithm from './KruskalsAlgorithm';
 import DijkstraAlgorithm from './DijkstraAlgorithm';
@@ -179,23 +187,20 @@ import ConstructFromInorderPreorder from './ConstructFromInorderPreorder';
 import ValidateBST from './ValidateBST';
 import KthSmallestInBST from './KthSmallestInBST';
 
-// ---------- Graph Algorithms ----------
+// ---------- Graph ----------
 import BFS from './BFS';
 import DFS from './DFS';
 import CycleDetectionUndirected from './CycleDetectionUndirected';
 import CycleDetectionDirected from './CycleDetectionDirected';
 import TopologicalSort from './TopologicalSort';
-import DijkstraGraph from './DijkstraAlgorithm';        // alias
 import BellmanFord from './BellmanFord';
 import FloydWarshall from './FloydWarshall';
-import PrimsGraph from './PrimsAlgorithm';              // alias
-import KruskalsGraph from './KruskalsAlgorithm';        // alias
 import DisjointSet from './DisjointSet';
 import Kosaraju from './Kosaraju';
 import BridgesInGraph from './BridgesInGraph';
 import ArticulationPoint from './ArticulationPoint';
 
-// DP
+// ---------- DP ----------
 import ClimbingStairsDP from './ClimbingStairs';
 import UniquePaths from './UniquePaths';
 import LongestCommonSubsequence from './LongestCommonSubsequence';
@@ -216,9 +221,6 @@ import RussianDollEnvelopes from './RussianDollEnvelopes';
 import BurstBalloons from './BurstBalloons';
 import PalindromicSubstrings from './PalindromicSubstrings';
 
-
-
-
 // ---------- Component Map ----------
 const componentMap = {
   // Sorting
@@ -228,7 +230,7 @@ const componentMap = {
   'merge-sort': MergeSort,
   'quick-sort': QuickSort,
 
-  //Array
+  // Array
   'largest-element': LargestElement,
   'second-largest': SecondLargest,
   'array-sorted': ArraySorted,
@@ -311,21 +313,30 @@ const componentMap = {
 
   // Linked List
   'reverse-linked-list': ReverseLinkedList,
-'middle-of-linked-list': MiddleOfLinkedList,
-'detect-cycle': DetectCycle,
-'cycle-start': FindCycleStart,
-'remove-nth-from-end': RemoveNthFromEnd,
-'merge-two-sorted-lists': MergeTwoSortedLists,
-'add-two-numbers': AddTwoNumbers,
-'reverse-dll': ReverseDoublyLinkedList,
+  'middle-of-linked-list': MiddleOfLinkedList,
+  'detect-cycle': DetectCycle,
+  'cycle-start': FindCycleStart,
+  'remove-nth-from-end': RemoveNthFromEnd,
+  'merge-two-sorted-lists': MergeTwoSortedLists,
+  'add-two-numbers': AddTwoNumbers,
+  'reverse-dll': ReverseDoublyLinkedList,
   'reverse-k-group': ReverseNodesInKGroup,
   'copy-random-list': CopyListWithRandomPointer,
   'flatten-multilevel-list': FlattenMultilevelList,
 
-  // Recursion
-  'factorial': Factorial,
-  'fibonacci': Fibonacci,
-  'climbing-stairs': ClimbingStairs,
+  // Recursion 
+'factorial': Factorial,
+'fibonacci': Fibonacci,
+'power': Power,
+'subsets': Subsets,
+'subsets-ii': SubsetsII,
+'permutations': Permutations,
+'combination-sum': CombinationSum,
+'combination-sum-ii': CombinationSumII,
+'palindrome-partitioning': PalindromePartitioning,
+'n-queens': NQueens,
+'sudoku-solver': SudokuSolver,
+'rat-in-maze': RatInMaze,
 
   // Bit Manipulation
   'bitwise-operations': BitwiseOperations,
@@ -337,7 +348,7 @@ const componentMap = {
   'bitwise-and-range': BitwiseAndRange,
   'subsets-bitmask': SubsetsBitmask,
 
-    // Stack and Queue
+  // Stack and Queue
   'valid-parentheses': ValidParentheses,
   'min-stack': MinStack,
   'next-greater-element': NextGreaterElement,
@@ -349,15 +360,15 @@ const componentMap = {
   'stack-using-queues': StackUsingQueues,
   'queue-using-stacks': QueueUsingStacks,
 
-  // in componentMap
-'max-sum-subarray-k': MaxSumSubarrayK,
-'longest-substring-k-distinct': LongestSubstringKDistinct,
-'fruit-into-baskets': FruitIntoBaskets,
-'minimum-size-subarray-sum': MinimumSizeSubarraySum,
-'two-sum-sorted': TwoSumSorted,
-'remove-duplicates-sorted': RemoveDuplicatesSorted,
-'container-with-most-water': ContainerWithMostWater,
-'trapping-rain-water': TrappingRainWater,
+  // Sliding Window & Two Pointers
+  'max-sum-subarray-k': MaxSumSubarrayK,
+  'longest-substring-k-distinct': LongestSubstringKDistinct,
+  'fruit-into-baskets': FruitIntoBaskets,
+  'minimum-size-subarray-sum': MinimumSizeSubarraySum,
+  'two-sum-sorted': TwoSumSorted,
+  'remove-duplicates-sorted': RemoveDuplicatesSorted,
+  'container-with-most-water': ContainerWithMostWater,
+  'trapping-rain-water': TrappingRainWater,
 
   // Heap
   'max-heap': MaxHeap,
@@ -371,70 +382,69 @@ const componentMap = {
 
   // Greedy
   'activity-selection': ActivitySelection,
-'n-meetings-in-room': NMeetingsInRoom,
-'minimum-platforms': MinimumPlatforms,
-'job-sequencing': JobSequencing,
-'coin-change-greedy': CoinChangeGreedy,
-'fractional-knapsack': FractionalKnapsack,
-'huffman-coding': HuffmanCoding,
-'prims-algorithm': PrimsAlgorithm,
-'kruskals-algorithm': KruskalsAlgorithm,
-'dijkstra-algorithm': DijkstraAlgorithm,
-'ford-fulkerson': FordFulkerson,
+  'n-meetings-in-room': NMeetingsInRoom,
+  'minimum-platforms': MinimumPlatforms,
+  'job-sequencing': JobSequencing,
+  'coin-change-greedy': CoinChangeGreedy,
+  'fractional-knapsack': FractionalKnapsack,
+  'huffman-coding': HuffmanCoding,
+  'prims-algorithm': PrimsAlgorithm,
+  'kruskals-algorithm': KruskalsAlgorithm,
+  'dijkstra-algorithm': DijkstraAlgorithm,
+  'ford-fulkerson': FordFulkerson,
 
   // Tree
   'inorder-traversal': InorderTraversal,
-'preorder-traversal': PreorderTraversal,
-'postorder-traversal': PostorderTraversal,
-'level-order-traversal': LevelOrderTraversal,
-'max-depth': MaxDepth,
-'balanced-tree': BalancedBinaryTree,
-'diameter': DiameterOfBinaryTree,
-'same-tree': SameTree,
-'invert-tree': InvertBinaryTree,
-'lca': LowestCommonAncestor,
-'max-path-sum': BinaryTreeMaxPathSum,
-'construct-from-inorder-preorder': ConstructFromInorderPreorder,
-'validate-bst': ValidateBST,
-'kth-smallest-bst': KthSmallestInBST,
+  'preorder-traversal': PreorderTraversal,
+  'postorder-traversal': PostorderTraversal,
+  'level-order-traversal': LevelOrderTraversal,
+  'max-depth': MaxDepth,
+  'balanced-tree': BalancedBinaryTree,
+  'diameter': DiameterOfBinaryTree,
+  'same-tree': SameTree,
+  'invert-tree': InvertBinaryTree,
+  'lca': LowestCommonAncestor,
+  'max-path-sum': BinaryTreeMaxPathSum,
+  'construct-from-inorder-preorder': ConstructFromInorderPreorder,
+  'validate-bst': ValidateBST,
+  'kth-smallest-bst': KthSmallestInBST,
 
-// Graph
-'bfs': BFS,
-'dfs': DFS,
-'cycle-detection-undirected': CycleDetectionUndirected,
-'cycle-detection-directed': CycleDetectionDirected,
-'topological-sort': TopologicalSort,
-'dijkstra': DijkstraAlgorithm,
-'bellman-ford': BellmanFord,
-'floyd-warshall': FloydWarshall,
-'prims': PrimsAlgorithm,
-'kruskals': KruskalsAlgorithm,
-'disjoint-set': DisjointSet,
-'kosaraju': Kosaraju,
-'bridges': BridgesInGraph,
-'articulation-point': ArticulationPoint,
+  // Graph
+  'bfs': BFS,
+  'dfs': DFS,
+  'cycle-detection-undirected': CycleDetectionUndirected,
+  'cycle-detection-directed': CycleDetectionDirected,
+  'topological-sort': TopologicalSort,
+  'dijkstra': DijkstraAlgorithm,
+  'bellman-ford': BellmanFord,
+  'floyd-warshall': FloydWarshall,
+  'prims': PrimsAlgorithm,
+  'kruskals': KruskalsAlgorithm,
+  'disjoint-set': DisjointSet,
+  'kosaraju': Kosaraju,
+  'bridges': BridgesInGraph,
+  'articulation-point': ArticulationPoint,
 
-// DP
-'climbing-stairs': ClimbingStairsDP,
-'unique-paths': UniquePaths,
-'longest-common-subsequence': LongestCommonSubsequence,
-'knapsack': Knapsack,
-'coin-change': CoinChange,
-'house-robber': HouseRobber,
-'max-subarray': MaxSubarray,
-'decode-ways': DecodeWays,
-'unique-paths-obstacles': UniquePathsObstacles,
-'minimum-path-sum': MinimumPathSum,
-'coin-change-ii': CoinChangeII,
-'partition-equal-subset': PartitionEqualSubsetSum,
-'word-break': WordBreak,
-'lis': LIS,
-'matrix-chain-multiplication': MatrixChainMultiplication,
-'number-of-lis': NumberOfLIS,
-'russian-doll': RussianDollEnvelopes,
-'burst-balloons': BurstBalloons,
-'palindromic-substrings': PalindromicSubstrings,
-
+  // DP
+  'climbing-stairs': ClimbingStairsDP,
+  'unique-paths': UniquePaths,
+  'longest-common-subsequence': LongestCommonSubsequence,
+  'knapsack': Knapsack,
+  'coin-change': CoinChange,
+  'house-robber': HouseRobber,
+  'max-subarray': MaxSubarray,
+  'decode-ways': DecodeWays,
+  'unique-paths-obstacles': UniquePathsObstacles,
+  'minimum-path-sum': MinimumPathSum,
+  'coin-change-ii': CoinChangeII,
+  'partition-equal-subset': PartitionEqualSubsetSum,
+  'word-break': WordBreak,
+  'lis': LIS,
+  'matrix-chain-multiplication': MatrixChainMultiplication,
+  'number-of-lis': NumberOfLIS,
+  'russian-doll': RussianDollEnvelopes,
+  'burst-balloons': BurstBalloons,
+  'palindromic-substrings': PalindromicSubstrings,
 };
 
 const VisualizationRenderer = ({ algorithm }) => {

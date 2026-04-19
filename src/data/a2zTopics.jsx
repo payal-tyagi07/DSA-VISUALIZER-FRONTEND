@@ -220,44 +220,44 @@ const topics = [
   ]
 },
   // ==================== Step 7: Recursion ====================
-  {
-    id: 'step6',
-    name: 'Step 6: Recursion',
-    total: 15,
-    completed: 0,
-    subtopics: [
-      {
-        id: '7.1',
-        name: 'Basic Recursion',
-        problems: [
-          { id: 'factorial', name: 'Factorial', visualizable: false },
-          { id: 'fibonacci', name: 'Fibonacci', visualizable: false },
-          { id: 'power', name: 'Power of a Number (x^n)', visualizable: false }
-        ]
-      },
-      {
-        id: '7.2',
-        name: 'Subsets & Permutations',
-        problems: [
-          { id: 'subsets', name: 'Subsets (Power Set)', visualizable: false },
-          { id: 'subsets-ii', name: 'Subsets II (Duplicates)', visualizable: false },
-          { id: 'permutations', name: 'Permutations', visualizable: false },
-          { id: 'combination-sum', name: 'Combination Sum', visualizable: false },
-          { id: 'combination-sum-ii', name: 'Combination Sum II', visualizable: false },
-          { id: 'palindrome-partitioning', name: 'Palindrome Partitioning', visualizable: false }
-        ]
-      },
-      {
-        id: '7.3',
-        name: 'Backtracking',
-        problems: [
-          { id: 'n-queens', name: 'N‑Queens', visualizable: false },
-          { id: 'sudoku-solver', name: 'Sudoku Solver', visualizable: false },
-          { id: 'rat-in-maze', name: 'Rat in a Maze', visualizable: false }
-        ]
-      }
-    ]
-  },
+{
+  "id": "step6",
+  "name": "Step 6: Recursion",
+  "total": 15,
+  "completed": 0,
+  "subtopics": [
+    {
+      "id": "7.1",
+      "name": "Basic Recursion",
+      "problems": [
+        { "id": "factorial", "name": "Factorial", "visualizable": true },
+        { "id": "fibonacci", "name": "Fibonacci", "visualizable": true },
+        { "id": "power", "name": "Power of a Number (x^n)", "visualizable": true }
+      ]
+    },
+    {
+      "id": "7.2",
+      "name": "Subsets & Permutations",
+      "problems": [
+        { "id": "subsets", "name": "Subsets (Power Set)", "visualizable": true },
+        { "id": "subsets-ii", "name": "Subsets II (Duplicates)", "visualizable": true },
+        { "id": "permutations", "name": "Permutations", "visualizable": true },
+        { "id": "combination-sum", "name": "Combination Sum", "visualizable": true },
+        { "id": "combination-sum-ii", "name": "Combination Sum II", "visualizable": true },
+        { "id": "palindrome-partitioning", "name": "Palindrome Partitioning", "visualizable": true }
+      ]
+    },
+    {
+      "id": "7.3",
+      "name": "Backtracking",
+      "problems": [
+        { "id": "n-queens", "name": "N‑Queens", "visualizable": true },
+        { "id": "sudoku-solver", "name": "Sudoku Solver", "visualizable": true },
+        { "id": "rat-in-maze", "name": "Rat in a Maze", "visualizable": true }
+      ]
+    }
+  ]
+},
 
   // ==================== Step 8: Bit Manipulation ====================
 {
