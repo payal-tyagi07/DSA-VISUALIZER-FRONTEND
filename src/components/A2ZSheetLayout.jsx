@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import topics from '../data/a2zTopics';
 import VisualizationRenderer from './VisualizationRenderer';
-import AlgorithmGalaxy from './AlgorithmGalaxy';  // ✅ changed to space galaxy
+import AlgorithmGalaxy from './AlgorithmGalaxy';
 import SearchBarWithSuggestions from './SearchBarWithSuggestions';
 
 const A2ZSheetLayout = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(null);
   const [expandedTopics, setExpandedTopics] = useState({});
   const [notFoundQuery, setNotFoundQuery] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // ← new state for mobile
 
   const toggleTopic = (topicId) => {
     setExpandedTopics(prev => ({
@@ -25,6 +26,7 @@ const A2ZSheetLayout = () => {
         visualizable: true
       });
       setNotFoundQuery(null);
+      setSidebarOpen(false); // close sidebar after selection on mobile
     } else if (searchQuery) {
       setSelectedAlgorithm(null);
       setNotFoundQuery(searchQuery);
@@ -32,15 +34,36 @@ const A2ZSheetLayout = () => {
   };
 
   return (
-    <div className="flex h-full bg-[#0a0a0a] text-gray-300 font-mono">
-      {/* Sidebar – scrollable */}
-      <div className="w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto">
-        <div className="p-3 bg-[#0d0d0d] border-b border-[#222222]">
+    <div className="flex h-full bg-[#0a0a0a] text-gray-300 font-mono relative">
+      {/* Hamburger button (visible only on mobile) */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="fixed top-4 left-4 z-30 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
+        aria-label="Toggle sidebar"
+      >
+        <svg className="w-6 h-6 text-[#9cdcfe]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      {/* Sidebar – off-canvas on mobile, always visible on desktop */}
+      <div className={`
+        fixed inset-y-0 left-0 z-20 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
+        md:relative md:translate-x-0
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="p-3 bg-[#0d0d0d] border-b border-[#222222] flex justify-between items-center">
           <h2 className="text-base font-bold text-[#9cdcfe] flex items-center gap-2">
             <span>📚</span> DSA SHEET
           </h2>
-          <p className="text-[11px] text-[#6a9955] mt-1">Visualize Your Code</p>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="md:hidden text-gray-400 hover:text-white"
+          >
+            ✕
+          </button>
         </div>
+        <p className="text-[11px] text-[#6a9955] px-3 pt-2">Visualize Your Code</p>
 
         <div className="p-2">
           {topics.map((topic) => (
@@ -68,6 +91,7 @@ const A2ZSheetLayout = () => {
                           onClick={() => {
                             setSelectedAlgorithm(problem);
                             setNotFoundQuery(null);
+                            setSidebarOpen(false);
                           }}
                           className={`
                             w-full text-left p-1.5 text-xs rounded transition-colors
@@ -96,13 +120,21 @@ const A2ZSheetLayout = () => {
         </div>
       </div>
 
-      {/* Main content – scrollable independently */}
+      {/* Overlay when sidebar is open on mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-10 bg-black/50 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Main content */}
       <div className="flex-1 flex flex-col overflow-y-auto bg-[#0a0a0a]">
         <div className="flex-1 p-0">
           {selectedAlgorithm ? (
             <VisualizationRenderer algorithm={selectedAlgorithm} />
           ) : notFoundQuery ? (
-            <div className="h-full flex items-center justify-center">
+            <div className="h-full flex items-center justify-center p-4">
               <div className="text-center p-8 bg-[#0a0a0a] border border-[#222222] rounded-xl shadow-2xl max-w-md">
                 <h3 className="text-2xl font-bold text-[#569cd6] mb-4">Work in Progress 🚧</h3>
                 <p className="text-gray-400 mb-4">
