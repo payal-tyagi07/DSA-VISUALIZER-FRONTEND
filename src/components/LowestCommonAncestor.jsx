@@ -70,7 +70,7 @@ const LowestCommonAncestor = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-[#0a0a0a] text-gray-200 rounded-2xl shadow-2xl font-mono border border-[#222222]">
-      <div className="text-center mb-6"><h2 className="text-3xl font-bold text-[#569cd6] mb-2">Lowest Common Ancestor</h2><div className="flex justify-center gap-4 mb-4"><span className="bg-[#2d2d2d] px-3 py-1 rounded-full text-sm">⏱️ Time: O(n)</span><span className="bg-[#2d2d2d] px-3 py-1 rounded-full text-sm">💾 Space: O(n)</span></div></div>
+      <div className="text-center mb-6"><h2 className="text-3xl font-bold text-[#569cd6] mb-2">Lowest Common Ancestor</h2><div className="flex justify-center gap-4 mb-4"><span className="bg-[#2d2d2d] px-3 py-1 rounded-full text-sm">⏱️ Time: O(logn)</span><span className="bg-[#2d2d2d] px-3 py-1 rounded-full text-sm">💾 Space: O(n)</span></div></div>
       <div className="flex flex-wrap justify-center gap-4 mb-6">
         <input type="text" value={input} onChange={(e) => setInput(e.target.value)} className="bg-[#1e1e1e] border border-[#3c3c3c] rounded px-3 py-1 w-80" />
         <input type="number" value={pInput} onChange={(e) => setPInput(e.target.value)} className="bg-[#1e1e1e] border border-[#3c3c3c] rounded px-3 py-1 w-24" placeholder="p" />
