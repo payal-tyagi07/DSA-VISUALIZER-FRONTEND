@@ -34,11 +34,11 @@ const A2ZSheetLayout = () => {
   };
 
   return (
-    <div className="flex h-full bg-[#0a0a0a] text-gray-300 font-mono relative">
+    <div className="flex h-full w-full bg-[#0a0a0a] text-gray-300 font-mono relative overflow-hidden">
       {/* Hamburger button (mobile only) */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="fixed top-4 left-4 z-30 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
+        className="fixed top-4 left-4 z-40 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
         aria-label="Toggle sidebar"
       >
         <svg className="w-6 h-6 text-[#9cdcfe]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,9 +46,9 @@ const A2ZSheetLayout = () => {
         </svg>
       </button>
 
-      {/* Sidebar – off‑canvas on mobile, always visible on desktop */}
+      {/* Sidebar – off-canvas on mobile, always visible on desktop */}
       <div className={`
-        fixed inset-y-0 left-0 z-20 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-30 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
         md:relative md:translate-x-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
@@ -123,14 +123,14 @@ const A2ZSheetLayout = () => {
       {/* Overlay when sidebar is open on mobile */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-10 bg-black/50 md:hidden"
+          className="fixed inset-0 z-20 bg-black/50 md:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Main content */}
-      <div className="flex-1 flex flex-col bg-[#0a0a0a] min-h-0">
-        <div className="flex-1 overflow-y-auto">
+      {/* Main content – takes full width, no margin/padding interference */}
+      <div className="flex-1 flex flex-col bg-[#0a0a0a] w-full min-w-0 overflow-hidden">
+        <div className="flex-1 overflow-y-auto overflow-x-auto">
           {selectedAlgorithm ? (
             <VisualizationRenderer algorithm={selectedAlgorithm} />
           ) : notFoundQuery ? (
@@ -154,11 +154,11 @@ const A2ZSheetLayout = () => {
               </div>
             </div>
           ) : (
-            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} sidebarOpen={sidebarOpen} />
+            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} />
           )}
         </div>
 
-        {/* Sticky bottom search bar */}
+        {/* Sticky bottom search bar (only when algorithm selected) */}
         {selectedAlgorithm && (
           <div className="sticky bottom-0 z-20 bg-[#0a0a0a] border-t border-[#222222] p-3">
             <SearchBarWithSuggestions
