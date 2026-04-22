@@ -9,7 +9,7 @@ const A2ZSheetLayout = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(null);
   const [expandedTopics, setExpandedTopics] = useState({});
   const [notFoundQuery, setNotFoundQuery] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // ← new state for mobile
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleTopic = (topicId) => {
     setExpandedTopics(prev => ({
@@ -26,7 +26,7 @@ const A2ZSheetLayout = () => {
         visualizable: true
       });
       setNotFoundQuery(null);
-      setSidebarOpen(false); // close sidebar after selection on mobile
+      setSidebarOpen(false);
     } else if (searchQuery) {
       setSelectedAlgorithm(null);
       setNotFoundQuery(searchQuery);
@@ -35,7 +35,7 @@ const A2ZSheetLayout = () => {
 
   return (
     <div className="flex h-full bg-[#0a0a0a] text-gray-300 font-mono relative">
-      {/* Hamburger button (visible only on mobile) */}
+      {/* Hamburger button (mobile only) */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="fixed top-4 left-4 z-30 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
@@ -46,7 +46,7 @@ const A2ZSheetLayout = () => {
         </svg>
       </button>
 
-      {/* Sidebar – off-canvas on mobile, always visible on desktop */}
+      {/* Sidebar – off‑canvas on mobile, always visible on desktop */}
       <div className={`
         fixed inset-y-0 left-0 z-20 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
         md:relative md:translate-x-0
@@ -129,8 +129,8 @@ const A2ZSheetLayout = () => {
       )}
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-y-auto bg-[#0a0a0a]">
-        <div className="flex-1 p-0">
+      <div className="flex-1 flex flex-col bg-[#0a0a0a] min-h-0">
+        <div className="flex-1 overflow-y-auto">
           {selectedAlgorithm ? (
             <VisualizationRenderer algorithm={selectedAlgorithm} />
           ) : notFoundQuery ? (
@@ -154,13 +154,13 @@ const A2ZSheetLayout = () => {
               </div>
             </div>
           ) : (
-            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} />
+            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} sidebarOpen={sidebarOpen} />
           )}
         </div>
 
-        {/* Sticky bottom search bar (only shown when an algorithm is selected) */}
+        {/* Sticky bottom search bar */}
         {selectedAlgorithm && (
-          <div className="sticky bottom-0 bg-[#0a0a0a] border-t border-[#222222] p-3">
+          <div className="sticky bottom-0 z-20 bg-[#0a0a0a] border-t border-[#222222] p-3">
             <SearchBarWithSuggestions
               onSelectAlgorithm={handleAlgorithmSelect}
               placeholder="Search another algorithm..."

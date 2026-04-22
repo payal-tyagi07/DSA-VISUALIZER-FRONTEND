@@ -102,8 +102,6 @@ const topics = [
           { id: 'binary-search', name: 'Binary Search to find X', visualizable: true },
           { id: 'lower-bound', name: 'Implement Lower Bound', visualizable: true },
           { id: 'upper-bound', name: 'Implement Upper Bound', visualizable: true },
-          { id: 'search-insert', name: 'Search Insert Position', visualizable: false },
-          { id: 'floor-ceil', name: 'Floor/Ceil in Sorted Array', visualizable: false },
           { id: 'first-last-occurrence', name: 'First and Last Occurrences', visualizable: true },
           { id: 'search-rotated', name: 'Search in Rotated Sorted Array', visualizable: true },
           { id: 'find-min-rotated', name: 'Find minimum in Rotated Sorted Array', visualizable: true },
