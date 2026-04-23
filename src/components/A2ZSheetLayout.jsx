@@ -10,6 +10,7 @@ const A2ZSheetLayout = () => {
   const [expandedTopics, setExpandedTopics] = useState({});
   const [notFoundQuery, setNotFoundQuery] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false); // ← new state for mobile modal
 
   const toggleTopic = (topicId) => {
     setExpandedTopics(prev => ({
@@ -27,6 +28,7 @@ const A2ZSheetLayout = () => {
       });
       setNotFoundQuery(null);
       setSidebarOpen(false);
+      setShowMobileSearch(false); // close modal after selection
     } else if (searchQuery) {
       setSelectedAlgorithm(null);
       setNotFoundQuery(searchQuery);
@@ -34,11 +36,11 @@ const A2ZSheetLayout = () => {
   };
 
   return (
-    <div className="flex h-full w-full bg-[#0a0a0a] text-gray-300 font-mono relative overflow-hidden">
-      {/* Hamburger button (mobile only) */}
+    <div className="flex h-full bg-[#0a0a0a] text-gray-300 font-mono relative">
+      {/* Hamburger button (visible only on mobile) */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="fixed top-4 left-4 z-40 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
+        className="fixed top-4 left-4 z-30 p-2 bg-[#111111] rounded-md border border-[#222222] md:hidden"
         aria-label="Toggle sidebar"
       >
         <svg className="w-6 h-6 text-[#9cdcfe]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +50,7 @@ const A2ZSheetLayout = () => {
 
       {/* Sidebar – off-canvas on mobile, always visible on desktop */}
       <div className={`
-        fixed inset-y-0 left-0 z-30 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-20 w-64 bg-[#111111] border-r border-[#222222] overflow-y-auto transform transition-transform duration-300 ease-in-out
         md:relative md:translate-x-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
@@ -123,14 +125,14 @@ const A2ZSheetLayout = () => {
       {/* Overlay when sidebar is open on mobile */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-black/50 md:hidden"
+          className="fixed inset-0 z-10 bg-black/50 md:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Main content – takes full width, no margin/padding interference */}
-      <div className="flex-1 flex flex-col bg-[#0a0a0a] w-full min-w-0 overflow-hidden">
-        <div className="flex-1 overflow-y-auto overflow-x-auto">
+      {/* Main content */}
+      <div className="flex-1 flex flex-col overflow-y-auto bg-[#0a0a0a]">
+        <div className="flex-1 p-0">
           {selectedAlgorithm ? (
             <VisualizationRenderer algorithm={selectedAlgorithm} />
           ) : notFoundQuery ? (
@@ -158,9 +160,9 @@ const A2ZSheetLayout = () => {
           )}
         </div>
 
-        {/* Sticky bottom search bar (only when algorithm selected) */}
+        {/* Sticky bottom search bar – visible only on desktop, hidden on mobile */}
         {selectedAlgorithm && (
-          <div className="sticky bottom-0 z-20 bg-[#0a0a0a] border-t border-[#222222] p-3">
+          <div className="sticky bottom-0 bg-[#0a0a0a] border-t border-[#222222] p-3 hidden md:block">
             <SearchBarWithSuggestions
               onSelectAlgorithm={handleAlgorithmSelect}
               placeholder="Search another algorithm..."
@@ -169,6 +171,48 @@ const A2ZSheetLayout = () => {
           </div>
         )}
       </div>
+
+      {/* Floating search button + modal (mobile only) */}
+      {selectedAlgorithm && (
+        <>
+          {/* Floating button */}
+          <button
+            onClick={() => setShowMobileSearch(true)}
+            className="fixed bottom-6 right-4 z-40 p-3 bg-[#0e639c] rounded-full shadow-lg md:hidden hover:bg-[#1177bb] transition-colors"
+            aria-label="Search another algorithm"
+          >
+            🔍
+          </button>
+
+          {/* Modal overlay */}
+          {showMobileSearch && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+              onClick={() => setShowMobileSearch(false)}
+            >
+              <div
+                className="bg-[#0a0a0a] rounded-xl p-4 w-full max-w-md border border-[#222222]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="text-green-400 retro-text text-lg">Search another algorithm</h3>
+                  <button
+                    onClick={() => setShowMobileSearch(false)}
+                    className="text-gray-400 hover:text-white text-xl"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <SearchBarWithSuggestions
+                  onSelectAlgorithm={handleAlgorithmSelect}
+                  placeholder="Type algorithm name..."
+                  compact={false}
+                />
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };
