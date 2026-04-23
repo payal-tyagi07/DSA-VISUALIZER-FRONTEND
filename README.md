@@ -1,7 +1,7 @@
 # 🚀 DSA Visualizer – Algorithm Galaxy
 
 SITE LINK---
-**dsa-algoscape.netlify.app**
+**algoscape-site.netlify.app**
 
 **Explore 200+ algorithms as colorful planets in a 3D space galaxy. Search, click, and watch them come to life.**
 
