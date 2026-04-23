@@ -25,7 +25,6 @@ const SpacePreloader = ({ onComplete }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-      {/* Animated stars background */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(120)].map((_, i) => (
           <div
@@ -42,15 +41,10 @@ const SpacePreloader = ({ onComplete }) => {
           />
         ))}
       </div>
-
       <div className="relative z-10 text-center">
-        {/* Changed font to old programming font */}
         <div className="text-5xl font-bold text-green-400 old-programming-font mb-6 animate-pulse">AlgoScape</div>
         <div className="w-80 h-2 bg-gray-800 rounded-full overflow-hidden mx-auto">
-          <div
-            className="h-full bg-green-400 rounded-full transition-all duration-100"
-            style={{ width: `${progress}%` }}
-          />
+          <div className="h-full bg-green-400 rounded-full transition-all duration-100" style={{ width: `${progress}%` }} />
         </div>
         <p className="text-green-400 retro-text text-sm mt-4">
           {progress < 30 && "✨ Initializing galaxy..."}
@@ -59,17 +53,9 @@ const SpacePreloader = ({ onComplete }) => {
           {progress >= 90 && "🚀 Almost ready!"}
         </p>
       </div>
-
       <style>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 1; }
-        }
-        .old-programming-font {
-          font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
-          font-weight: bold;
-          letter-spacing: 2px;
-        }
+        @keyframes twinkle { 0%,100%{opacity:0.2} 50%{opacity:1} }
+        .old-programming-font { font-family: 'Courier New','Consolas','Monaco',monospace; font-weight: bold; letter-spacing: 2px; }
       `}</style>
     </div>
   );
@@ -119,9 +105,7 @@ const categoryColors = {
 
 const getCategoryColor = (stepName) => {
   let shortName = stepName;
-  if (stepName.includes(':')) {
-    shortName = stepName.split(':')[1].trim();
-  }
+  if (stepName.includes(':')) shortName = stepName.split(':')[1].trim();
   const fullNameMap = {
     'Sorting Techniques': 'Sorting Techniques',
     'Arrays': 'Arrays',
@@ -145,9 +129,7 @@ const getCategoryColor = (stepName) => {
 const colorCache = new Map();
 const getPlanetColor = (id, stepName) => {
   const key = `${id}-${stepName}`;
-  if (!colorCache.has(key)) {
-    colorCache.set(key, getCategoryColor(stepName));
-  }
+  if (!colorCache.has(key)) colorCache.set(key, getCategoryColor(stepName));
   return colorCache.get(key);
 };
 
@@ -200,9 +182,7 @@ const Planet = ({ label, color, position, orbitRadius, speed, onClick, isVisible
   const [hovered, setHovered] = useState(false);
   const labelRef = useRef();
   const texture = useMemo(() => {
-    if (!textureCache.has(color)) {
-      textureCache.set(color, createPlanetTexture(color));
-    }
+    if (!textureCache.has(color)) textureCache.set(color, createPlanetTexture(color));
     return textureCache.get(color);
   }, [color]);
 
@@ -212,9 +192,7 @@ const Planet = ({ label, color, position, orbitRadius, speed, onClick, isVisible
     const x = Math.cos(angleRef.current) * orbitRadius;
     const z = Math.sin(angleRef.current) * orbitRadius;
     meshRef.current.position.set(x, position[1], z);
-    if (labelRef.current) {
-      labelRef.current.position.set(x, position[1] + 0.7, z);
-    }
+    if (labelRef.current) labelRef.current.position.set(x, position[1] + 0.7, z);
   });
 
   if (!isVisible) return null;
@@ -225,34 +203,11 @@ const Planet = ({ label, color, position, orbitRadius, speed, onClick, isVisible
         <ringGeometry args={[orbitRadius - 0.05, orbitRadius + 0.05, 64]} />
         <meshStandardMaterial color="#aaa" transparent opacity={0.15} side={THREE.DoubleSide} />
       </mesh>
-      <mesh
-        ref={meshRef}
-        position={[orbitRadius, position[1], 0]}
-        onClick={() => onClick(label)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        castShadow
-      >
+      <mesh ref={meshRef} position={[orbitRadius, position[1], 0]} onClick={() => onClick(label)} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)} castShadow>
         <sphereGeometry args={[size, 64, 64]} />
-        <meshStandardMaterial
-          map={texture}
-          color={color}
-          emissive={color}
-          emissiveIntensity={hovered ? 0.3 : 0.1}
-          metalness={0.1}
-          roughness={0.6}
-        />
+        <meshStandardMaterial map={texture} color={color} emissive={color} emissiveIntensity={hovered ? 0.3 : 0.1} metalness={0.1} roughness={0.6} />
       </mesh>
-      <Text
-        ref={labelRef}
-        position={[orbitRadius, position[1] + 0.7, 0]}
-        fontSize={0.22}
-        color="#ffffff"
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.02}
-        outlineColor="#000000"
-      >
+      <Text ref={labelRef} position={[orbitRadius, position[1] + 0.7, 0]} fontSize={0.22} color="#ffffff" anchorX="center" anchorY="middle" outlineWidth={0.02} outlineColor="#000000">
         {label.length > 18 ? label.slice(0, 15) + '..' : label}
       </Text>
     </group>
@@ -286,9 +241,10 @@ const CameraController = () => {
   return null;
 };
 
-const AlgorithmGalaxy = ({ onSelectAlgorithm }) => {
+const AlgorithmGalaxy = ({ onSelectAlgorithm, sidebarOpen = false }) => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchModal, setShowSearchModal] = useState(false);
   const algorithms = useMemo(() => getAllAlgorithms(), []);
   const categories = useMemo(() => getCategories(), []);
 
@@ -329,30 +285,22 @@ const AlgorithmGalaxy = ({ onSelectAlgorithm }) => {
       onSelectAlgorithm(planet.algorithm);
     } else if (!isSearching) {
       setSearchQuery(planet.label);
+      if (showSearchModal) setShowSearchModal(false);
     }
   };
 
-  if (loading) {
-    return <SpacePreloader onComplete={() => setLoading(false)} />;
-  }
+  if (loading) return <SpacePreloader onComplete={() => setLoading(false)} />;
 
   return (
     <div className="h-full w-full bg-black relative">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-        .retro-text {
-          font-family: 'VT323', 'Courier New', monospace;
-          letter-spacing: 1px;
-          text-shadow: 0 0 5px #0f0;
-        }
-        .retro-input {
-          font-family: 'VT323', 'Courier New', monospace;
-          font-size: 1.2rem;
-          letter-spacing: 1px;
-        }
+        .retro-text { font-family: 'VT323','Courier New',monospace; letter-spacing: 1px; text-shadow: 0 0 5px #0f0; }
+        .retro-input { font-family: 'VT323','Courier New',monospace; font-size: 1.2rem; letter-spacing: 1px; }
       `}</style>
 
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 w-96">
+      {/* Desktop: always show the full search bar */}
+      <div className="hidden md:block absolute top-4 left-1/2 transform -translate-x-1/2 z-20 w-96">
         <input
           type="text"
           value={searchQuery}
@@ -364,6 +312,68 @@ const AlgorithmGalaxy = ({ onSelectAlgorithm }) => {
           {planets.length} {isSearching ? 'algorithms' : 'categories'} visible
         </p>
       </div>
+
+      {/* Mobile: when sidebar is closed, show the full search bar (compact) */}
+      {!sidebarOpen && (
+        <div className="md:hidden absolute top-16 left-1/2 transform -translate-x-1/2 z-20 w-11/12">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="🔭 Search algorithms"
+            className="w-full px-5 py-2 rounded-full bg-black/80 backdrop-blur-md text-green-400 border border-green-500/50 focus:outline-none focus:ring-2 focus:ring-green-400 retro-input text-sm"
+          />
+          <p className="text-center text-green-400 mt-2 retro-text text-xs">
+            {planets.length} {isSearching ? 'algorithms' : 'categories'} visible
+          </p>
+        </div>
+      )}
+
+        {/* Mobile: when sidebar is open, show a search button at top-right */}
+{sidebarOpen && (
+  <div className="md:hidden absolute top-20 right-4 z-30">
+    <button
+      onClick={() => setShowSearchModal(true)}
+      className="p-3 bg-[#0e639c] rounded-full shadow-lg hover:bg-[#1177bb] transition-colors"
+      aria-label="Search algorithms"
+    >
+      🔍
+    </button>
+  </div>
+)}
+
+      {/* Modal for search when sidebar is open on mobile */}
+      {showSearchModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:hidden"
+          onClick={() => setShowSearchModal(false)}
+        >
+          <div
+            className="bg-[#0a0a0a] rounded-xl p-4 w-full max-w-md border border-[#222222]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="text-green-400 retro-text text-lg">Search algorithms</h3>
+              <button
+                onClick={() => setShowSearchModal(false)}
+                className="text-gray-400 hover:text-white text-xl"
+              >
+                ✕
+              </button>
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="🔭 Type algorithm name or category"
+              className="w-full px-4 py-2 rounded-full bg-black/80 backdrop-blur-md text-green-400 border border-green-500/50 focus:outline-none focus:ring-2 focus:ring-green-400 retro-input text-sm"
+            />
+            <p className="text-center text-green-400 mt-2 retro-text text-xs">
+              {planets.length} {isSearching ? 'algorithms' : 'categories'} visible
+            </p>
+          </div>
+        </div>
+      )}
 
       <Canvas shadows camera={{ position: [0, 5, 15], fov: 60 }} style={{ background: 'black' }}>
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0.3} fade speed={1} />

@@ -272,7 +272,7 @@ const topics = [
         { id: 'count-set-bits', name: 'Count Set Bits', visualizable: true },
         { id: 'power-of-two', name: 'Power of Two', visualizable: true },
         { id: 'single-number', name: 'Single Number (XOR)', visualizable: true },
-        { id: 'missing-number', name: 'Missing Number (XOR)', visualizable: true }
+        { id: 'missing-number-xor', name: 'Missing Number (XOR)', visualizable: true }
       ]
     },
     {

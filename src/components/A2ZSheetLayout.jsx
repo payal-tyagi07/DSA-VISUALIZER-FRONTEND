@@ -16,6 +16,7 @@ const A2ZSheetLayout = () => {
     setExpandedTopics(prev => ({
       ...prev,
       [topicId]: !prev[topicId]
+      
     }));
   };
 
@@ -156,7 +157,7 @@ const A2ZSheetLayout = () => {
               </div>
             </div>
           ) : (
-            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} />
+            <AlgorithmGalaxy onSelectAlgorithm={handleAlgorithmSelect} sidebarOpen={sidebarOpen} />
           )}
         </div>
 

@@ -343,7 +343,7 @@ const componentMap = {
   'count-set-bits': CountSetBits,
   'power-of-two': PowerOfTwo,
   'single-number': SingleNumberXOR,
-  'missing-number': MissingNumberXOR,
+  'missing-number-xor': MissingNumberXOR,
   'divide-two-integers': DivideTwoIntegers,
   'bitwise-and-range': BitwiseAndRange,
   'subsets-bitmask': SubsetsBitmask,
